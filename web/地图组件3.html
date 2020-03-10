@@ -1,0 +1,998 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.min.js"></script>
+    <script src="china.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 1200px;height: 700px;margin: 0 auto;"></div>
+    <script>
+             //初始化echarts实例
+             var myChart = echarts.init(document.getElementById('main'));
+             //使用制定的配置项和数据显示图表
+             myChart.setOption(
+                 {
+                    //提示框组件
+                    tooltip: {
+                        show: false,//是否显示组件
+                        trigger: 'item',//数据触发类型  item：数据图饼图触发      axis:坐标轴触发
+                        formatter: '{b}'//地图 {b}（区域名称）
+                    },
+                    series: [{
+                        name: '中国',
+                        type: 'map',
+                        mapType: 'china',
+                        //selectedMode: 'multiple',
+                        itemStyle: {//有2个状态  normal 是图形在默认状态下的样式；emphasis 是图形在高亮状态下的样式
+                            normal: {
+                                label: {
+                                    show: true,
+                                    textStyle: {//标签的文本样式
+                                        fontSize: 18,
+                                        color: '#000'
+                                    }
+                                },
+                                borderColor: '#cdcdca',//边框颜色
+                                borderWidth: 0.5,//边框线宽
+                                areaStyle: {//区域样式
+                                    color: '#000'
+                                }
+                            },
+                            emphasis: {
+                                borderWidth: 0.5,
+                                borderColor: '#cdcdca',
+                                areaColor: '#fff',
+                                label: {
+                                    shadowColor: '#000', //默认透明
+                                    shadowBlur: 10,
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#3db77f'
+                                    }
+                                }
+                            }
+                        },
+
+                        label: {
+                            normal: {
+                                show: false,
+                            },
+                            emphasis: {
+                                show: false,
+                            }
+                        },
+                        data: [{
+                            name: '黑龙江',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {//高亮状态下的多边形和标签样式
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '青海',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                   borderWidth: 1,
+                                   borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '陕西',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '广东',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f2e9e4',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '广西',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#daeadd",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#daeadd',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '重庆',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#daeadd",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#daeadd',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '宁夏',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f2e9e4',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '云南',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e9e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f2e9e4',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '河南',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f5e6e8",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '江西',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f4e8e8",
+                                    //borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '吉林',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f6f7e9',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '海南',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e8e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f2e8e4',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '台湾',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f2e8e4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f2e8e4',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '河北',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                },
+                                emphasis: {
+                                    areaColor: '#fff',
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    label: {
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '甘肃',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f6f7e9',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '湖北',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                     borderWidth: 1,
+                                     borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '贵州',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f6f7e9',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '西藏',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6f7e9",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#f6f7e9',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '内蒙古',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#dce6ea',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '新疆',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#dce6ea',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '北京',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#dce6ea',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '天津',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#dce6ea',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '上海',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#3db77f',
+                                    areaColor: '#dce6ea',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '湖南',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                     borderWidth: 1,
+                                     borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '福建',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#dce6ea",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '江苏',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '山东',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '辽宁',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '山西',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '浙江',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                    color: '#3db77f'
+                                }
+                            }
+                        }, {
+                            name: '四川',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#e4ebe8',
+                                    areaColor: '#e4ebe8',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                        }, {
+                            name: '南海诸岛',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#e4ebe8",
+                                },
+                                emphasis: {
+                                    // borderWidth: 1,
+                                    // borderColor: '#e4ebe8',
+                                    areaColor: '#e4ebe8',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: false,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                        }, {
+                            name: '安徽',
+                            itemStyle: {
+                                normal: {
+                                    areaColor: "#f6eae4",
+                                    // borderWidth: 2
+                                },
+                                emphasis: {
+                                    borderWidth: 1,
+                                    borderColor: '#3db77f',
+                                    areaColor: '#fff',
+                                    label: {
+                                        shadowColor: '#000', //默认透明
+                                        shadowBlur: 10,
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12,
+                                            color: '#3db77f'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12,
+                                        color: '#0d6fb8'
+                                    }
+                                },
+                                emphasis: {
+                                    show: true,
+                                }
+                            }
+                        }],
+                        markPoint: {
+                            show: true,
+                            symbol: 'circle',
+                            symbolSize: 10,
+                        }
+                    }]
+                }
+             );
+             myChart.on('click', function(params) {
+                    var city = params.name;
+                    console.log(city)
+//                  for(var i in map_citys){
+//                      if(map_citys[i]==city+'省'){
+//                          window.open(ROOT +'/hospital/?province='+ i);
+//                      }
+//                  }
+                });
+    </script>
+</body>
+</html>
