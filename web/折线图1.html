@@ -4,18 +4,119 @@
 <head>
     <meta charset="utf-8" />
     <title>折线图</title>
-    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script src="echarts-all.js"></script>
+    <style>
+        .boxtype {
+            height: 400px;
+            width: 800px;
+            padding: 20px;
+            margin: auto;
+            border: 5px solid;
+            border-radius:30px;
+        }
+
+        #menu {
+            height: auto;
+            width: 800px;
+            margin: auto;
+            margin-bottom: 1%;
+            margin-top: 1%;
+            padding: 10px;
+            border-radius: 30px;
+            background-color: burlywood;
+        }
+
+        table {
+            margin: auto;
+            text-align: center;
+        }
+
+        .typename {
+            font-size: 30px;
+            padding: 20px 30px 0px 30px;
+        }
+
+        .nownum {
+            font-size: 30px;
+            color: #ff0000;
+            padding: 0px 30px 0px 30px;
+        }
+
+        .yesnum {
+            font-size: 15px;
+            color: #4a4a4a;
+            padding: 0px 30px 20px 30px;
+        }
+
+        .choose {
+            text-align: center;
+            color: #ffffff;
+            background-color: burlywood;
+            border-radius: 10px;
+            border: 3px solid;
+            border-color: burlywood;
+            font-size: 30px;
+            padding: 10px 100px 10px 100px;
+        }
+
+        .unchoose {
+            text-align: center;
+            color: #000000;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 3px solid;
+            border-color: burlywood;
+            font-size: 30px;
+            padding: 10px 100px 10px 100px;
+        }
+
+        .unchoose:hover {
+            text-align: center;
+            color: #000000;
+            background-color: grey;
+            border-radius: 10px;
+            border: 3px solid;
+            border-color: burlywood;
+            font-size: 30px;
+            padding: 10px 100px 10px 100px;
+        }
+
+    </style>
 </head>
 
 
 <body>
-    <div id="box" style="height:400px;width: 800px;padding: 20px"></div>
+
+    <div id="menu">
+        <table>
+            <tr>
+                <td class="typename">现有确诊</td>
+                <td class="typename">累计确诊</td>
+                <td class="typename">累计治愈</td>
+                <td class="typename">累计死亡</td>
+            </tr>
+            <tr>
+                <td id="nowsure" class="nownum">123</td>
+                <td id="sumsure" class="nownum">123</td>
+                <td id="sumcure" class="nownum">123</td>
+                <td id="sumdead" class="nownum">123</td>
+            </tr>
+            <tr>
+                <td id="yessure" class="yesnum">昨日：+123</td>
+                <td id="yessumsure" class="yesnum">昨日：+123</td>
+                <td id="yessumcure" class="yesnum">昨日：+123</td>
+                <td id="yessumdead" class="yesnum">昨日：+123</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="box" class="boxtype"></div>
 
     <script>
         var myChart = echarts.init(document.getElementById("box"));
         var option = {
             title: {
-                text: '堆叠区域图'
+                text: '省份详情'
             },
             tooltip: {
                 trigger: 'axis',
