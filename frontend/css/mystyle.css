@@ -1,0 +1,123 @@
+﻿.map {
+    height: 600px;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    border: 5px solid;
+    border-radius: 30px;
+}
+
+.boxtype {
+    height: 400px;
+    width: 800px;
+    padding: 20px;
+    margin: auto;
+    border: 5px solid;
+    border-radius: 30px;
+}
+
+#menu {
+    height: auto;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: burlywood;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.typename {
+    font-size: 30px;
+    padding: 20px 30px 0px 30px;
+}
+
+.nownum {
+    font-size: 30px;
+    color: #ff0000;
+    padding: 0px 30px 0px 30px;
+}
+
+.yesnum {
+    font-size: 15px;
+    color: #4a4a4a;
+    padding: 0px 30px 20px 30px;
+}
+
+p {
+    font-size:15px;
+    color:#4a4a4a;
+}
+
+.choose {
+    text-align: center;
+    color: #ffffff;
+    background-color: burlywood;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: burlywood;
+    font-size: 30px;
+    padding: 10px 100px 10px 100px;
+}
+
+.unchoose {
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: burlywood;
+    font-size: 30px;
+    padding: 10px 100px 10px 100px;
+}
+
+.unchoose:hover {
+    text-align: center;
+    color: #000000;
+    background-color: grey;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: burlywood;
+    font-size: 30px;
+    padding: 10px 100px 10px 100px;
+ }
+
+#date {
+    height: auto;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: burlywood;
+}
+
+#dateline {
+    height: 50px;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: burlywood;
+}
+
+.datein {
+    float: right;
+}
+
+.return {
+    float: left;
+    background-color: #db9f42;
+    border-radius: 3px;
+    padding: 3px;
+}
