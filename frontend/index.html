@@ -7,103 +7,33 @@
     <title>地图组件</title>
     <script src="echarts.min.js"></script>
     <script src="china.js"></script>
-    <style>
-        .map {
-            height: 600px;
-            width: 800px;
-            margin: auto;
-            margin-bottom: 1%;
-            margin-top: 1%;
-            border:5px solid;
-            border-radius: 30px;
+    <link type="text/css" rel="stylesheet" href="mystyle.css" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+        function chan() {
+            myChart.clear();
+            myChart.setOption(option);
         }
-
-        #menu {
-            height: auto;
-            width: 800px;
-            margin: auto;
-            margin-bottom: 1%;
-            margin-top: 1%;
-            padding: 10px;
-            border-radius: 30px;
-            background-color: burlywood;
+        function chan1() {
+            myChart.clear();
+            myChart.setOption(option1);
         }
-
-        table {
-            margin: auto;
-            text-align: center;
-        }
-
-        .typename {
-            font-size: 30px;
-            padding: 20px 30px 0px 30px;
-        }
-
-        .nownum {
-            font-size: 30px;
-            color: #ff0000;
-            padding:0px 30px 0px 30px;
-        }
-
-        .yesnum {
-            font-size:15px;
-            color:#4a4a4a;
-            padding:0px 30px 20px 30px;
-        }
-
-        .choose {
-            text-align: center;
-            color: #ffffff;
-            background-color: burlywood;
-            border-radius: 10px;
-            border: 3px solid;
-            border-color: burlywood;
-            font-size: 30px;
-            padding: 10px 100px 10px 100px;
-        }
-
-        .unchoose {
-            text-align: center;
-            color: #000000;
-            background-color: #ffffff;
-            border-radius: 10px;
-            border: 3px solid;
-            border-color: burlywood;
-            font-size: 30px;
-            padding: 10px 100px 10px 100px;
-        }
-
-        .unchoose:hover {
-            text-align: center;
-            color: #000000;
-            background-color: grey;
-            border-radius: 10px;
-            border: 3px solid;
-            border-color: burlywood;
-            font-size: 30px;
-            padding: 10px 100px 10px 100px;
-        }
-
-        #date {
-            height: auto;
-            width: 800px;
-            margin: auto;
-            margin-bottom: 1%;
-            margin-top: 1%;
-            padding: 10px;
-            border-radius: 30px;
-            background-color: burlywood;
-        }
-    </style>
+    </script>
 </head>
 
 <body style="height: 100%; margin: 0">
-    
+
     <div id="date">
-        <p>
-            选择日期：
-            <input type="date" />
-        </p>
+        <form>
+            选择日期(1/19-2/2)：<input type="date" name="mydate" id="dateone" value="2020-02-02" />
+            <input type="button" value="设置当前时间" onclick="gettime()" />
+        </form>
     </div>
 
     <div id="menu">
@@ -145,8 +75,8 @@
     <div>
         <table>
             <tr>
-                <td id="choosenow" class="choose">现有确诊</td>
-                <td id="choosesum" class="unchoose">累计确诊</td>
+                <td id="choosenow" class="unchoose" onclick="chan()">现有确诊</td>
+                <td id="choosesum" class="unchoose" onclick="chan1()">累计确诊</td>
             </tr>
         </table>
     </div>
@@ -166,14 +96,9 @@
             tooltip: {
                 trigger: 'item'
             },
-            //legend: {
-                //orient: 'vertical',
-                //left: 'left',
-                //data: ['iphone']
-            //},
             visualMap: {
                 min: 0,
-                max: 2500,
+                max: 100,
                 left: 'left',
                 top: 'bottom',
                 text: ['高', '低'],           // 文本，默认为数值文本
@@ -220,49 +145,40 @@
                         }
                     },
                     top: "3%",//组件距离容器的距离
-                    //roam: false,
-                    //label: {
-                        //normal: {
-                            //show: false
-                        //},
-                        //emphasis: {
-                            //show: true
-                        //}
-                    //},
                     data: [
-                        { name: '北京', value: 2500 /*Math.round(Math.random() * 1000)*/ },
-                        { name: '天津', value: Math.round(Math.random() * 1000) },
-                        { name: '上海', value: Math.round(Math.random() * 1000) },
-                        { name: '重庆', value: Math.round(Math.random() * 1000) },
-                        { name: '河北', value: Math.round(Math.random() * 1000) },
-                        { name: '河南', value: Math.round(Math.random() * 1000) },
-                        { name: '云南', value: Math.round(Math.random() * 1000) },
-                        { name: '辽宁', value: Math.round(Math.random() * 1000) },
-                        { name: '黑龙江', value: Math.round(Math.random() * 1000) },
-                        { name: '湖南', value: Math.round(Math.random() * 1000) },
-                        { name: '安徽', value: Math.round(Math.random() * 1000) },
-                        { name: '山东', value: Math.round(Math.random() * 1000) },
-                        { name: '新疆', value: Math.round(Math.random() * 1000) },
-                        { name: '江苏', value: Math.round(Math.random() * 1000) },
-                        { name: '浙江', value: Math.round(Math.random() * 1000) },
-                        { name: '江西', value: Math.round(Math.random() * 1000) },
-                        { name: '湖北', value: Math.round(Math.random() * 1000) },
-                        { name: '广西', value: Math.round(Math.random() * 1000) },
-                        { name: '甘肃', value: Math.round(Math.random() * 1000) },
-                        { name: '山西', value: Math.round(Math.random() * 1000) },
-                        { name: '内蒙古', value: Math.round(Math.random() * 1000) },
-                        { name: '陕西', value: Math.round(Math.random() * 1000) },
-                        { name: '吉林', value: Math.round(Math.random() * 1000) },
-                        { name: '福建', value: Math.round(Math.random() * 1000) },
-                        { name: '贵州', value: Math.round(Math.random() * 1000) },
-                        { name: '广东', value: Math.round(Math.random() * 1000) },
-                        { name: '青海', value: Math.round(Math.random() * 1000) },
-                        { name: '西藏', value: Math.round(Math.random() * 1000) },
-                        { name: '四川', value: Math.round(Math.random() * 1000) },
-                        { name: '宁夏', value: Math.round(Math.random() * 1000) },
-                        { name: '海南', value: Math.round(Math.random() * 1000) },
-                        { name: '台湾', value: Math.round(Math.random() * 1000) },
-                        { name: '香港', value: Math.round(Math.random() * 1000) },
+                        { name: '北京', value: 80 /*Math.round(Math.random() * 1000)*/ },
+                        { name: '天津', value: 1 },
+                        { name: '上海', value: 25 },
+                        { name: '重庆', value: 4 },
+                        { name: '河北', value: 2 },
+                        { name: '河南', value: 1 },
+                        { name: '云南', value: 0 },
+                        { name: '辽宁', value: 11 },
+                        { name: '黑龙江', value: 21 },
+                        { name: '湖南', value: 0 },
+                        { name: '安徽', value: 0 },
+                        { name: '山东', value: 12 },
+                        { name: '新疆', value: 0 },
+                        { name: '江苏', value: 1 },
+                        { name: '浙江', value: 15 },
+                        { name: '江西', value: 0 },
+                        { name: '湖北', value: 11758 },
+                        { name: '广西', value: 7 },
+                        { name: '甘肃', value: 39 },
+                        { name: '山西', value: 0 },
+                        { name: '内蒙古', value: 3 },
+                        { name: '陕西', value: 11 },
+                        { name: '吉林', value: 1 },
+                        { name: '福建', value: 0 },
+                        { name: '贵州', value: 1 },
+                        { name: '广东', value: 49 },
+                        { name: '青海', value: 0 },
+                        { name: '西藏', value: 0 },
+                        { name: '四川', value: 24 },
+                        { name: '宁夏', value: 2 },
+                        { name: '海南', value: 2 },
+                        { name: '台湾', value: 32 },
+                        { name: '香港', value: 58 },
                         { name: '澳门', value: Math.round(Math.random() * 1000) }
                     ]
                 }
@@ -280,13 +196,669 @@
             //alert(city);
             window.location.href = "折线图1.html";
         });
-        // 载入动画提示
-        myChart.showLoading({
-            text: '正在努力的读取数据中...'
-        });
+    </script>
 
-        //取消载入提示
-        myChart.hideLoading(); 
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        //option = null;
+        var option1 = {
+            title: {
+                text: '疫情统计',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            visualMap: {
+                min: 0,
+                max: 1000,
+                left: 'left',
+                top: 'bottom',
+                text: ['高', '低'],           // 文本，默认为数值文本
+                calculable: true
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            series: [
+                {
+                    name: '点击查看>>',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,//是否开启鼠标缩放和平移漫游
+                    itemStyle: {//地图区域的多边形 图形样式
+                        normal: {//是图形在默认状态下的样式
+                            label: {
+                                show: true,//是否显示标签
+                                textStyle: {
+                                    color: "rgb(249, 249, 249)"
+                                }
+                            }
+                        },
+                        emphasis: {//是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
+                            //label: { show: true }
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            areaColor: 'blue',//区域颜色
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    },
+                    top: "3%",//组件距离容器的距离
+                    data: [
+                        { name: '北京', value: 437},
+                        { name: '天津', value: 136 },
+                        { name: '上海', value: 352 },
+                        { name: '重庆', value: 576 },
+                        { name: '河北', value: 318 },
+                        { name: '河南', value: 1273 },
+                        { name: '云南', value: 174 },
+                        { name: '辽宁', value: 125 },
+                        { name: '黑龙江', value: 482 },
+                        { name: '湖南', value: 1018 },
+                        { name: '安徽', value: 990 },
+                        { name: '山东', value: 760 },
+                        { name: '新疆', value: 76 },
+                        { name: '江苏', value: 631 },
+                        { name: '浙江', value: 1227 },
+                        { name: '江西', value: 935 },
+                        { name: '湖北', value: 67790 },
+                        { name: '广西', value: 252 },
+                        { name: '甘肃', value: 132 },
+                        { name: '山西', value: 133 },
+                        { name: '内蒙古', value: 75 },
+                        { name: '陕西', value: 245 },
+                        { name: '吉林', value: 93 },
+                        { name: '福建', value: 296 },
+                        { name: '贵州', value: 146 },
+                        { name: '广东', value: 1356 },
+                        { name: '青海', value: 18 },
+                        { name: '西藏', value: 1 },
+                        { name: '四川', value: 539 },
+                        { name: '宁夏', value: 75 },
+                        { name: '海南', value: 168 },
+                        { name: '台湾', value: 53 },
+                        { name: '香港', value: 140 },
+                        { name: '澳门', value: Math.round(Math.random() * 1000) }
+                    ]
+                }
+            ]
+        };;
+        myChart.setOption(option, true);
+        //鼠标移入事件
+        myChart.on('mouseover', function (params) {
+            var dataIndex = params.dataIndex;
+            console.log(params);
+        });
+        //鼠标点击事件 跳转页面
+        myChart.on('click', function (params) {
+            var city = params.name;
+            //alert(city);
+            window.location.href = "line.html";
+        });
+    </script>
+
+    <script>
+        function setdata(da) {
+            var qz = new Array();
+            var ys = new Array();
+            var zy = new Array();
+            var sw = new Array();
+            qz["2020-01-19"] = 1;
+            qz["2020-01-20"] = 6;
+            qz["2020-01-21"] = 281;
+            qz["2020-01-22"] = 426;
+            qz["2020-01-23"] = 583;
+            qz["2020-01-24"] = 832;
+            qz["2020-01-25"] = 1248;
+            qz["2020-01-26"] = 1918;
+            qz["2020-01-27"] = 2649;
+            qz["2020-01-28"] = 4390;
+            qz["2020-01-29"] = 5816;
+            qz["2020-01-30"] = 7484;
+            qz["2020-01-31"] = 9403;
+            qz["2020-02-01"] = 11306;
+            qz["2020-02-02"] = 13749;
+
+            ys["2020-01-19"] = 0;
+            ys["2020-01-20"] = 0;
+            ys["2020-01-21"] = 6;
+            ys["2020-01-22"] = 22;
+            ys["2020-01-23"] = 24;
+            ys["2020-01-24"] = 31;
+            ys["2020-01-25"] = 66;
+            ys["2020-01-26"] = 138;
+            ys["2020-01-27"] = 281;
+            ys["2020-01-28"] = 482;
+            ys["2020-01-29"] = 663;
+            ys["2020-01-30"] = 980;
+            ys["2020-01-31"] = 1180;
+            ys["2020-02-01"] = 1445;
+            ys["2020-02-02"] = 1715;
+
+            zy["2020-01-19"] = 0;
+            zy["2020-01-20"] = 0;
+            zy["2020-01-21"] = 25;
+            zy["2020-01-22"] = 28;
+            zy["2020-01-23"] = 30;
+            zy["2020-01-24"] = 34;
+            zy["2020-01-25"] = 37;
+            zy["2020-01-26"] = 47;
+            zy["2020-01-27"] = 51;
+            zy["2020-01-28"] = 59;
+            zy["2020-01-29"] = 66;
+            zy["2020-01-30"] = 89;
+            zy["2020-01-31"] = 134;
+            zy["2020-02-01"] = 213;
+            zy["2020-02-02"] = 293;
+
+            sw["2020-01-19"] = 0;
+            sw["2020-01-20"] = 0;
+            sw["2020-01-21"] = 6;
+            sw["2020-01-22"] = 9;
+            sw["2020-01-23"] = 17;
+            sw["2020-01-24"] = 26;
+            sw["2020-01-25"] = 41;
+            sw["2020-01-26"] = 56;
+            sw["2020-01-27"] = 82;
+            sw["2020-01-28"] = 106;
+            sw["2020-01-29"] = 132;
+            sw["2020-01-30"] = 170;
+            sw["2020-01-31"] = 213;
+            sw["2020-02-01"] = 259;
+            sw["2020-02-02"] = 304;
+
+            qz["湖北2020-01-19"] = 0;
+            qz["湖北2020-01-20"] = 0;
+            qz["湖北2020-01-21"] = 239;
+            qz["湖北2020-01-22"] = 338;
+            qz["湖北2020-01-23"] = 399;
+            qz["湖北2020-01-24"] = 494;
+            qz["湖北2020-01-25"] = 658;
+            qz["湖北2020-01-26"] = 958;
+            qz["湖北2020-01-27"] = 1303;
+            qz["湖北2020-01-28"] = 2570;
+            qz["湖北2020-01-29"] = 3385;
+            qz["湖北2020-01-30"] = 4370;
+            qz["湖北2020-01-31"] = 5522;
+            qz["湖北2020-02-01"] = 6774;
+            qz["湖北2020-02-02"] = 8601;
+            qz["安徽2020-01-19"] = 0;
+            qz["安徽2020-01-20"] = 0;
+            qz["安徽2020-01-21"] = 0;
+            qz["安徽2020-01-22"] = 1;
+            qz["安徽2020-01-23"] = 9;
+            qz["安徽2020-01-24"] = 15;
+            qz["安徽2020-01-25"] = 39;
+            qz["安徽2020-01-26"] = 60;
+            qz["安徽2020-01-27"] = 70;
+            qz["安徽2020-01-28"] = 106;
+            qz["安徽2020-01-29"] = 152;
+            qz["安徽2020-01-30"] = 198;
+            qz["安徽2020-01-31"] = 234;
+            qz["安徽2020-02-01"] = 294;
+            qz["安徽2020-02-02"] = 335;
+            qz["北京2020-01-19"] = 0;
+            qz["北京2020-01-20"] = 5;
+            qz["北京2020-01-21"] = 10;
+            qz["北京2020-01-22"] = 14;
+            qz["北京2020-01-23"] = 26;
+            qz["北京2020-01-24"] = 35;
+            qz["北京2020-01-25"] = 49;
+            qz["北京2020-01-26"] = 66;
+            qz["北京2020-01-27"] = 77;
+            qz["北京2020-01-28"] = 86;
+            qz["北京2020-01-29"] = 106;
+            qz["北京2020-01-30"] = 126;
+            qz["北京2020-01-31"] = 150;
+            qz["北京2020-02-01"] = 173;
+            qz["北京2020-02-02"] = 181;
+            qz["重庆2020-01-19"] = 0;
+            qz["重庆2020-01-20"] = 0;
+            qz["重庆2020-01-21"] = 5;
+            qz["重庆2020-01-22"] = 6;
+            qz["重庆2020-01-23"] = 9;
+            qz["重庆2020-01-24"] = 27;
+            qz["重庆2020-01-25"] = 57;
+            qz["重庆2020-01-26"] = 75;
+            qz["重庆2020-01-27"] = 110;
+            qz["重庆2020-01-28"] = 132;
+            qz["重庆2020-01-29"] = 147;
+            qz["重庆2020-01-30"] = 164;
+            qz["重庆2020-01-31"] = 205;
+            qz["重庆2020-02-01"] = 236;
+            qz["重庆2020-02-02"] = 258;
+            qz["福建2020-01-19"] = 0;
+            qz["福建2020-01-20"] = 0;
+            qz["福建2020-01-21"] = 0;
+            qz["福建2020-01-22"] = 1;
+            qz["福建2020-01-23"] = 5;
+            qz["福建2020-01-24"] = 10;
+            qz["福建2020-01-25"] = 18;
+            qz["福建2020-01-26"] = 35;
+            qz["福建2020-01-27"] = 59;
+            qz["福建2020-01-28"] = 82;
+            qz["福建2020-01-29"] = 101;
+            qz["福建2020-01-30"] = 120;
+            qz["福建2020-01-31"] = 144;
+            qz["福建2020-02-01"] = 159;
+            qz["福建2020-02-02"] = 179;
+            qz["浙江2020-01-19"] = 0;
+            qz["浙江2020-01-20"] = 0;
+            qz["浙江2020-01-21"] = 0;
+            qz["浙江2020-01-22"] = 10;
+            qz["浙江2020-01-23"] = 27;
+            qz["浙江2020-01-24"] = 43;
+            qz["浙江2020-01-25"] = 62;
+            qz["浙江2020-01-26"] = 102;
+            qz["浙江2020-01-27"] = 128;
+            qz["浙江2020-01-28"] = 173;
+            qz["浙江2020-01-29"] = 294;
+            qz["浙江2020-01-30"] = 425;
+            qz["浙江2020-01-31"] = 529;
+            qz["浙江2020-02-01"] = 585;
+            qz["浙江2020-02-02"] = 639;
+
+            qz["甘肃2020-02-02"] = 49;
+            qz["广东2020-02-02"] = 649;
+            qz["贵州2020-02-02"] = 44;
+            qz["海南2020-02-02"] = 64;
+            qz["河北2020-02-02"] = 109;
+            qz["河南2020-02-02"] = 488;
+            qz["黑龙江2020-02-02"] = 91;
+            qz["湖南2020-02-02"] = 455;
+            qz["江西2020-02-02"] = 324;
+            qz["吉林2020-02-02"] = 22;
+            qz["江苏2020-02-02"] = 230;
+            qz["辽宁2020-02-02"] = 63;
+            qz["内蒙古2020-02-02"] = 26;
+            qz["青海2020-02-02"] = 11;
+            qz["山西2020-02-02"] = 55;
+            qz["山东2020-02-02"] = 225;
+            qz["陕西2020-02-02"] = 102;
+            qz["上海2020-02-02"] = 156;
+            qz["四川2020-02-02"] = 228;
+            qz["天津2020-02-02"] = 41;
+            qz["西藏2020-02-02"] = 1;
+            qz["新疆2020-02-02"] = 21;
+            qz["云南2020-02-02"] = 102;
+
+            qz["甘肃2020-01-25"] = 7;
+            qz["广东2020-01-25"] = 76;
+            qz["贵州2020-01-25"] = 5;
+            qz["海南2020-01-25"] = 20;
+            qz["河北2020-01-25"] = 12;
+            qz["河南2020-01-25"] = 32;
+            qz["黑龙江2020-01-25"] = 8;
+            qz["湖南2020-01-25"] = 43;
+            qz["江西2020-01-25"] = 18;
+            qz["吉林2020-01-25"] = 4;
+            qz["江苏2020-01-25"] = 18;
+            qz["辽宁2020-01-25"] = 12;
+            qz["内蒙古2020-01-25"] = 2;
+            qz["青海2020-01-25"] = 0;
+            qz["山西2020-01-25"] = 6;
+            qz["山东2020-01-25"] = 21;
+            qz["陕西2020-01-25"] = 5;
+            qz["上海2020-01-25"] = 32;
+            qz["四川2020-01-25"] = 28;
+            qz["天津2020-01-25"] = 8;
+            qz["新疆2020-01-25"] = 3;
+            qz["云南2020-01-25"] = 5;
+
+            ys["湖北2020-01-19"] = 0;
+            ys["湖北2020-01-20"] = 0;
+            ys["湖北2020-01-21"] = 0;
+            ys["湖北2020-01-22"] = 0;
+            ys["湖北2020-01-23"] = 0;
+            ys["湖北2020-01-24"] = 0;
+            ys["湖北2020-01-25"] = 0;
+            ys["湖北2020-01-26"] = 0;
+            ys["湖北2020-01-27"] = 0;
+            ys["湖北2020-01-28"] = 0;
+            ys["湖北2020-01-29"] = 0;
+            ys["湖北2020-01-30"] = 0;
+            ys["湖北2020-01-31"] = 0;
+            ys["湖北2020-02-01"] = 0;
+            ys["湖北2020-02-02"] = 0;
+            ys["安徽2020-01-19"] = 0;
+            ys["安徽2020-01-20"] = 0;
+            ys["安徽2020-01-21"] = 1;
+            ys["安徽2020-01-22"] = 3;
+            ys["安徽2020-01-23"] = 3;
+            ys["安徽2020-01-24"] = 3;
+            ys["安徽2020-01-25"] = 29;
+            ys["安徽2020-01-26"] = 44;
+            ys["安徽2020-01-27"] = 80;
+            ys["安徽2020-01-28"] = 118;
+            ys["安徽2020-01-29"] = 160;
+            ys["安徽2020-01-30"] = 205;
+            ys["安徽2020-01-31"] = 275;
+            ys["安徽2020-02-01"] = 352;
+            ys["安徽2020-02-02"] = 434;
+            ys["北京2020-01-19"] = 0;
+            ys["北京2020-01-20"] = 0;
+            ys["北京2020-01-21"] = 0;
+            ys["北京2020-01-22"] = 0;
+            ys["北京2020-01-23"] = 0;
+            ys["北京2020-01-24"] = 0;
+            ys["北京2020-01-25"] = 0;
+            ys["北京2020-01-26"] = 0;
+            ys["北京2020-01-27"] = 0;
+            ys["北京2020-01-28"] = 0;
+            ys["北京2020-01-29"] = 0;
+            ys["北京2020-01-30"] = 0;
+            ys["北京2020-01-31"] = 0;
+            ys["北京2020-02-01"] = 0;
+            ys["北京2020-02-02"] = 0;
+            ys["重庆2020-01-19"] = 0;
+            ys["重庆2020-01-20"] = 0;
+            ys["重庆2020-01-21"] = 0;
+            ys["重庆2020-01-22"] = 13;
+            ys["重庆2020-01-23"] = 13;
+            ys["重庆2020-01-24"] = 13;
+            ys["重庆2020-01-25"] = 13;
+            ys["重庆2020-01-26"] = 13;
+            ys["重庆2020-01-27"] = 13;
+            ys["重庆2020-01-28"] = 13;
+            ys["重庆2020-01-29"] = 13;
+            ys["重庆2020-01-30"] = 13;
+            ys["重庆2020-01-31"] = 13;
+            ys["重庆2020-02-01"] = 13;
+            ys["重庆2020-02-02"] = 13;
+            ys["福建2020-01-19"] = 0;
+            ys["福建2020-01-20"] = 0;
+            ys["福建2020-01-21"] = 0;
+            ys["福建2020-01-22"] = 0;
+            ys["福建2020-01-23"] = 2;
+            ys["福建2020-01-24"] = 4;
+            ys["福建2020-01-25"] = 4;
+            ys["福建2020-01-26"] = 42;
+            ys["福建2020-01-27"] = 73;
+            ys["福建2020-01-28"] = 155;
+            ys["福建2020-01-29"] = 208;
+            ys["福建2020-01-30"] = 264;
+            ys["福建2020-01-31"] = 316;
+            ys["福建2020-02-01"] = 355;
+            ys["福建2020-02-02"] = 402;
+            ys["浙江2020-01-19"] = 0;
+            ys["浙江2020-01-20"] = 0;
+            ys["浙江2020-01-21"] = 0;
+            ys["浙江2020-01-22"] = 0;
+            ys["浙江2020-01-23"] = 0;
+            ys["浙江2020-01-24"] = 0;
+            ys["浙江2020-01-25"] = 0;
+            ys["浙江2020-01-26"] = 0;
+            ys["浙江2020-01-27"] = 0;
+            ys["浙江2020-01-28"] = 0;
+            ys["浙江2020-01-29"] = 0;
+            ys["浙江2020-01-30"] = 0;
+            ys["浙江2020-01-31"] = 0;
+            ys["浙江2020-02-01"] = 0;
+            ys["浙江2020-02-02"] = 0;
+            zy["湖北2020-01-19"] = 0;
+            zy["湖北2020-01-20"] = 0;
+            zy["湖北2020-01-21"] = 25;
+            zy["湖北2020-01-22"] = 28;
+            zy["湖北2020-01-23"] = 28;
+            zy["湖北2020-01-24"] = 31;
+            zy["湖北2020-01-25"] = 32;
+            zy["湖北2020-01-26"] = 42;
+            zy["湖北2020-01-27"] = 44;
+            zy["湖北2020-01-28"] = 44;
+            zy["湖北2020-01-29"] = 44;
+            zy["湖北2020-01-30"] = 54;
+            zy["湖北2020-01-31"] = 80;
+            zy["湖北2020-02-01"] = 130;
+            zy["湖北2020-02-02"] = 179;
+            zy["安徽2020-01-19"] = 0;
+            zy["安徽2020-01-20"] = 0;
+            zy["安徽2020-01-21"] = 0;
+            zy["安徽2020-01-22"] = 0;
+            zy["安徽2020-01-23"] = 0;
+            zy["安徽2020-01-24"] = 0;
+            zy["安徽2020-01-25"] = 0;
+            zy["安徽2020-01-26"] = 0;
+            zy["安徽2020-01-27"] = 0;
+            zy["安徽2020-01-28"] = 0;
+            zy["安徽2020-01-29"] = 0;
+            zy["安徽2020-01-30"] = 2;
+            zy["安徽2020-01-31"] = 3;
+            zy["安徽2020-02-01"] = 3;
+            zy["安徽2020-02-02"] = 5;
+            zy["北京2020-01-19"] = 0;
+            zy["北京2020-01-20"] = 0;
+            zy["北京2020-01-21"] = 0;
+            zy["北京2020-01-22"] = 0;
+            zy["北京2020-01-23"] = 0;
+            zy["北京2020-01-24"] = 1;
+            zy["北京2020-01-25"] = 2;
+            zy["北京2020-01-26"] = 2;
+            zy["北京2020-01-27"] = 2;
+            zy["北京2020-01-28"] = 4;
+            zy["北京2020-01-29"] = 4;
+            zy["北京2020-01-30"] = 5;
+            zy["北京2020-01-31"] = 5;
+            zy["北京2020-02-01"] = 9;
+            zy["北京2020-02-02"] = 9;
+            zy["重庆2020-01-19"] = 0;
+            zy["重庆2020-01-20"] = 0;
+            zy["重庆2020-01-21"] = 0;
+            zy["重庆2020-01-22"] = 0;
+            zy["重庆2020-01-23"] = 0;
+            zy["重庆2020-01-24"] = 0;
+            zy["重庆2020-01-25"] = 0;
+            zy["重庆2020-01-26"] = 0;
+            zy["重庆2020-01-27"] = 0;
+            zy["重庆2020-01-28"] = 0;
+            zy["重庆2020-01-29"] = 0;
+            zy["重庆2020-01-30"] = 1;
+            zy["重庆2020-01-31"] = 1;
+            zy["重庆2020-02-01"] = 1;
+            zy["重庆2020-02-02"] = 3;
+            zy["福建2020-01-19"] = 0;
+            zy["福建2020-01-20"] = 0;
+            zy["福建2020-01-21"] = 0;
+            zy["福建2020-01-22"] = 0;
+            zy["福建2020-01-23"] = 0;
+            zy["福建2020-01-24"] = 0;
+            zy["福建2020-01-25"] = 0;
+            zy["福建2020-01-26"] = 0;
+            zy["福建2020-01-27"] = 0;
+            zy["福建2020-01-28"] = 0;
+            zy["福建2020-01-29"] = 0;
+            zy["福建2020-01-30"] = 0;
+            zy["福建2020-01-31"] = 0;
+            zy["福建2020-02-01"] = 0;
+            zy["福建2020-02-02"] = 0;
+            zy["浙江2020-01-19"] = 0;
+            zy["浙江2020-01-20"] = 0;
+            zy["浙江2020-01-21"] = 0;
+            zy["浙江2020-01-22"] = 0;
+            zy["浙江2020-01-23"] = 0;
+            zy["浙江2020-01-24"] = 0;
+            zy["浙江2020-01-25"] = 0;
+            zy["浙江2020-01-26"] = 0;
+            zy["浙江2020-01-27"] = 0;
+            zy["浙江2020-01-28"] = 0;
+            zy["浙江2020-01-29"] = 0;
+            zy["浙江2020-01-30"] = 3;
+            zy["浙江2020-01-31"] = 8;
+            zy["浙江2020-02-01"] = 14;
+            zy["浙江2020-02-02"] = 22;
+
+            sw["重庆2020-01-19"] = 0;
+            sw["重庆2020-01-20"] = 0;
+            sw["重庆2020-01-21"] = 0;
+            sw["重庆2020-01-22"] = 0;
+            sw["重庆2020-01-23"] = 0;
+            sw["重庆2020-01-24"] = 0;
+            sw["重庆2020-01-25"] = 0;
+            sw["重庆2020-01-26"] = 0;
+            sw["重庆2020-01-27"] = 0;
+            sw["重庆2020-01-28"] = 0;
+            sw["重庆2020-01-29"] = 0;
+            sw["重庆2020-01-30"] = 0;
+            sw["重庆2020-01-31"] = 0;
+            sw["重庆2020-02-01"] = 1;
+            sw["重庆2020-02-02"] = 1;
+
+            sw["安徽2020-01-19"] = 0;
+            sw["安徽2020-01-20"] = 0;
+            sw["安徽2020-01-21"] = 0;
+            sw["安徽2020-01-22"] = 0;
+            sw["安徽2020-01-23"] = 0;
+            sw["安徽2020-01-24"] = 0;
+            sw["安徽2020-01-25"] = 0;
+            sw["安徽2020-01-26"] = 0;
+            sw["安徽2020-01-27"] = 0;
+            sw["安徽2020-01-28"] = 0;
+            sw["安徽2020-01-29"] = 0;
+            sw["安徽2020-01-30"] = 0;
+            sw["安徽2020-01-31"] = 0;
+            sw["安徽2020-02-01"] = 0;
+            sw["安徽2020-02-02"] = 0;
+
+            sw["浙江2020-01-19"] = 0;
+            sw["浙江2020-01-20"] = 0;
+            sw["浙江2020-01-21"] = 0;
+            sw["浙江2020-01-22"] = 0;
+            sw["浙江2020-01-23"] = 0;
+            sw["浙江2020-01-24"] = 0;
+            sw["浙江2020-01-25"] = 0;
+            sw["浙江2020-01-26"] = 0;
+            sw["浙江2020-01-27"] = 0;
+            sw["浙江2020-01-28"] = 0;
+            sw["浙江2020-01-29"] = 0;
+            sw["浙江2020-01-30"] = 0;
+            sw["浙江2020-01-31"] = 0;
+            sw["浙江2020-02-01"] = 0;
+            sw["浙江2020-02-02"] = 0;
+
+            sw["北京2020-01-19"] = 0;
+            sw["北京2020-01-20"] = 0;
+            sw["北京2020-01-21"] = 0;
+            sw["北京2020-01-22"] = 0;
+            sw["北京2020-01-23"] = 0;
+            sw["北京2020-01-24"] = 0;
+            sw["北京2020-01-25"] = 0;
+            sw["北京2020-01-26"] = 0;
+            sw["北京2020-01-27"] = 1;
+            sw["北京2020-01-28"] = 1;
+            sw["北京2020-01-29"] = 1;
+            sw["北京2020-01-30"] = 1;
+            sw["北京2020-01-31"] = 1;
+            sw["北京2020-02-01"] = 1;
+            sw["北京2020-02-02"] = 1;
+
+            sw["福建2020-01-19"] = 0;
+            sw["福建2020-01-20"] = 0;
+            sw["福建2020-01-21"] = 0;
+            sw["福建2020-01-22"] = 0;
+            sw["福建2020-01-23"] = 0;
+            sw["福建2020-01-24"] = 0;
+            sw["福建2020-01-25"] = 0;
+            sw["福建2020-01-26"] = 0;
+            sw["福建2020-01-27"] = 0;
+            sw["福建2020-01-28"] = 0;
+            sw["福建2020-01-29"] = 0;
+            sw["福建2020-01-30"] = 0;
+            sw["福建2020-01-31"] = 0;
+            sw["福建2020-02-01"] = 0;
+            sw["福建2020-02-02"] = 0;
+
+            sw["湖北2020-01-19"] = 0;
+            sw["湖北2020-01-20"] = 0;
+            sw["湖北2020-01-21"] = 6;
+            sw["湖北2020-01-22"] = 9;
+            sw["湖北2020-01-23"] = 17;
+            sw["湖北2020-01-24"] = 24;
+            sw["湖北2020-01-25"] = 39;
+            sw["湖北2020-01-26"] = 52;
+            sw["湖北2020-01-27"] = 76;
+            sw["湖北2020-01-28"] = 100;
+            sw["湖北2020-01-29"] = 125;
+            sw["湖北2020-01-30"] = 162;
+            sw["湖北2020-01-31"] = 204;
+            sw["湖北2020-02-01"] = 249;
+            sw["湖北2020-02-02"] = 294;
+
+            var i1 = document.getElementById("nowipnum");
+            var i2 = document.getElementById("nowspnum");
+            var i3 = document.getElementById("nowdangenum");
+            var i4 = document.getElementById("sumsurenum");
+            var i5 = document.getElementById("sumcurenum");
+            var i6 = document.getElementById("sumdeadnum");
+            var i11 = document.getElementById("yesipnum");
+            var i22 = document.getElementById("yesspnum");
+            var i33 = document.getElementById("yesdangenum");
+            var i44 = document.getElementById("yessurenum");
+            var i55 = document.getElementById("yescurenum");
+            var i66 = document.getElementById("yesdeadnum");
+            var be = getBSD();
+            var to = getD();
+            i1.innerText = (qz[to] - sw[to] - zy[to]).toString();
+            i2.innerText = parseInt(parseInt(ys[da]) / 15);
+            i3.innerText = parseInt(parseInt(qz[da]) / 18);
+            i4.innerText = qz[da];
+            i5.innerText = zy[da];
+            i6.innerText = sw[da];
+            var x = ((qz[to] - sw[to] - zy[to]) - (qz[be] - sw[be] - zy[be])) / 8;
+            x = parseInt(x);
+            i11.innerText = "昨日：+" + x.toString();
+            i22.innerText = "昨日：+" + (ys[to] - ys[be]).toString();
+            i33.innerText = "昨日：+" + x;
+            i44.innerText = "昨日：+" + (qz[to] - qz[be]).toString();
+            i55.innerText = "昨日：+" + (zy[to] - zy[be]).toString();
+            i66.innerText = "昨日：+" + (sw[to] - sw[be]).toString();
+        }
+        function gettime() {
+            var form = document.getElementById("dateone");
+            var content = form.value;
+            setdata(content);
+        }
+        function getD() {
+            var form = document.getElementById("dateone").value;
+            return form;
+        }
+        function getBSD() {
+            var x1 = document.getElementById("dateone").value;
+            var x2 = x1.substr(x1.length - 2, 2);
+            var x3 = x2 - 1;
+            var x4;
+            if (x3 < 10 && x3 >= 1) {
+                x3 = "0".concat(x3.toString());
+                x4 = x1.substr(0, x1.length - 2).concat(x3);
+            }
+            else if (x3 <= 0) {
+                x3 = (x3 + 31) % 32;
+                var m = getMonth(x1);
+                m = m - 1;
+                m = m.toString();
+                m = "0".concat(m.toString());
+                x4 = x1.substr(0, 4) + "-" + m + "-" + x3;
+            }
+            else if (x3 > 10) {
+                x3 = x3.toString();
+                x4 = x1.substr(0, x1.length - 2) + x3;
+            }
+            return x4;
+        }
     </script>
 </body>
 </html>
